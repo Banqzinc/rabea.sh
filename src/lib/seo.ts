@@ -19,7 +19,7 @@ export function getSiteUrl() {
   return 'https://rabea.sh'
 }
 
-const DEFAULT_OG_IMAGE = 'https://rabea.sh/images/og-default.png'
+const DEFAULT_OG_IMAGE_PATH = '/images/og-default.svg'
 
 type BuildSeoInput = {
   title: string
@@ -44,20 +44,29 @@ export function buildSeo({
   article,
 }: BuildSeoInput) {
   const url = new URL(path, getSiteUrl()).toString()
-  const image = imageUrl ?? DEFAULT_OG_IMAGE
+  const trimmedDescription = description.trim()
+  const normalizedDescription =
+    trimmedDescription.length > 160 ? `${trimmedDescription.slice(0, 157).trimEnd()}…` : trimmedDescription
+
+  const image = imageUrl
+    ? new URL(imageUrl, getSiteUrl()).toString()
+    : new URL(DEFAULT_OG_IMAGE_PATH, getSiteUrl()).toString()
+
   const meta = [
     { title },
-    { name: 'description', content: description },
+    { name: 'description', content: normalizedDescription },
     { property: 'og:title', content: title },
-    { property: 'og:description', content: description },
+    { property: 'og:description', content: normalizedDescription },
     { property: 'og:type', content: ogType },
     { property: 'og:url', content: url },
     { property: 'og:image', content: image },
+    { property: 'og:image:alt', content: 'rabea.sh — tech blog and founder journey' },
     { property: 'og:site_name', content: 'rabea.sh' },
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:title', content: title },
-    { name: 'twitter:description', content: description },
+    { name: 'twitter:description', content: normalizedDescription },
     { name: 'twitter:image', content: image },
+    { name: 'twitter:image:alt', content: 'rabea.sh — tech blog and founder journey' },
   ]
 
   if (article) {
@@ -94,12 +103,15 @@ export function buildArticleSchema({
   url: string
   imageUrl?: string
 }) {
+  const siteUrl = getSiteUrl()
+  const publisherLogoUrl = new URL('/favicon.svg', siteUrl).toString()
+
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: title,
     description,
-    image: imageUrl ?? DEFAULT_OG_IMAGE,
+    image: imageUrl ?? new URL(DEFAULT_OG_IMAGE_PATH, siteUrl).toString(),
     datePublished,
     dateModified: dateModified ?? datePublished,
     author: {
@@ -107,8 +119,13 @@ export function buildArticleSchema({
       name: author,
     },
     publisher: {
-      '@type': 'Person',
-      name: 'Rabea Bader',
+      '@type': 'Organization',
+      name: 'rabea.sh',
+      url: siteUrl,
+      logo: {
+        '@type': 'ImageObject',
+        url: publisherLogoUrl,
+      },
     },
     mainEntityOfPage: {
       '@type': 'WebPage',

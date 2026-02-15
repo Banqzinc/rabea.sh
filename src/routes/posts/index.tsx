@@ -2,26 +2,43 @@ import { createFileRoute, Link } from '@tanstack/react-router'
 import { SiteHeader } from '@/components/layout/site-header'
 import { SiteFooter } from '@/components/layout/site-footer'
 import { getAllPosts } from '@/lib/posts'
-import { buildSeo } from '@/lib/seo'
+import { buildSeo, getSiteUrl } from '@/lib/seo'
 
 export const Route = createFileRoute('/posts/')({
   component: PostsIndexPage,
   head: () =>
     buildSeo({
-      title: 'Posts | rabea.sh',
-      description: 'All articles about software delivery, product thinking, and founder journey.',
+      title: 'Posts on shipping software and founder lessons | rabea.sh',
+      description:
+        'All articles on rabea.sh: software delivery, engineering decisions, product thinking, and founder lessons from building at Quidkey.',
       path: '/posts',
     }),
 })
 
 function PostsIndexPage() {
   const posts = getAllPosts()
+  const siteUrl = getSiteUrl()
+  const blogSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    name: 'rabea.sh — Posts',
+    url: `${siteUrl}/posts`,
+    author: { '@type': 'Person', name: 'Rabea Bader' },
+  }
 
   return (
     <div className="flex min-h-screen flex-col pt-14">
       <SiteHeader />
       <main className="mx-auto w-full max-w-4xl flex-1 px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
+        />
         <h1 className="mb-6 text-2xl font-semibold tracking-tight sm:mb-10 sm:text-3xl">Posts</h1>
+        <p className="mb-8 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:mb-10 sm:text-base">
+          Essays on software delivery, engineering craft, product thinking, and founder learnings —
+          written from first-hand experience building at Quidkey.
+        </p>
         <div className="space-y-4 sm:space-y-5">
           {posts.map((post) => (
             <article

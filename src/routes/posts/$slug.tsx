@@ -8,6 +8,15 @@ import { LinkedInIcon } from '@/components/icons'
 import { getPostBySlug } from '@/lib/posts'
 import { buildArticleSchema, buildSeo, getSiteUrl } from '@/lib/seo'
 
+function buildPostMetaTitle(postTitle: string) {
+  const brand = 'rabea.sh'
+  const withBrand = `${postTitle} | ${brand}`
+
+  if (withBrand.length >= 30 && withBrand.length <= 60) return withBrand
+  if (postTitle.length <= 60) return postTitle
+  return `${postTitle.slice(0, 57).trimEnd()}…`
+}
+
 export const Route = createFileRoute('/posts/$slug')({
   component: PostPage,
   head: ({ params }) => {
@@ -25,7 +34,7 @@ export const Route = createFileRoute('/posts/$slug')({
     const postPath = `/posts/${post.slug}` as const
 
     return buildSeo({
-      title: `${post.title} | rabea.sh`,
+      title: buildPostMetaTitle(post.title),
       description: post.description,
       path: postPath,
       ogType: 'article',
@@ -112,6 +121,7 @@ function PostPage() {
                 aria-label={`${post.author} on LinkedIn`}
               >
                 <LinkedInIcon className="h-4 w-4 sm:h-3.5 sm:w-3.5" />
+                <span className="sr-only">LinkedIn</span>
               </a>
             ) : null}
             <span className="hidden sm:inline">·</span>

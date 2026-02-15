@@ -4,7 +4,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev --port 3001",
-    "build": "vite build",
+    "generate:seo": "node ./scripts/generate-seo-files.mjs",
+    "build": "npm run generate:seo && vite build",
     "preview": "vite preview",
     "test": "vitest run"
   },

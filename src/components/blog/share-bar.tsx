@@ -54,6 +54,7 @@ export function ShareBar({ title, url }: ShareBarProps) {
         aria-label="Share on X"
       >
         <XIcon className={iconClasses} />
+        <span className="sr-only sm:not-sr-only">X</span>
       </a>
       <a
         href={whatsappUrl}

@@ -2,15 +2,15 @@ import { createFileRoute, Link } from '@tanstack/react-router'
 import { SiteHeader } from '@/components/layout/site-header'
 import { SiteFooter } from '@/components/layout/site-footer'
 import { getAllPosts } from '@/lib/posts'
-import { buildSeo } from '@/lib/seo'
+import { buildSeo, getSiteUrl } from '@/lib/seo'
 
 export const Route = createFileRoute('/')({
   component: HomePage,
   head: () =>
     buildSeo({
-      title: 'rabea.sh | Tech blog and founder journey',
+      title: 'Rabea Bader — tech blog and founder journey | rabea.sh',
       description:
-        'Personal notes on building products, shipping software, and the founder journey at Quidkey.',
+        'Personal notes on building Quidkey, shipping software faster, and the founder journey — engineering decisions, product tradeoffs, and what I learned along the way.',
       path: '/',
     }),
 })
@@ -18,11 +18,25 @@ export const Route = createFileRoute('/')({
 function HomePage() {
   const posts = getAllPosts()
   const latestPosts = posts.slice(0, 3)
+  const siteUrl = getSiteUrl()
+  const websiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'rabea.sh',
+    url: siteUrl,
+    description:
+      'Tech blog and founder journey — engineering decisions, product tradeoffs, and lessons from building at Quidkey.',
+    author: { '@type': 'Person', name: 'Rabea Bader' },
+  }
 
   return (
     <div className="flex min-h-screen flex-col pt-14">
       <SiteHeader />
       <main className="mx-auto w-full max-w-4xl flex-1 px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
         <section className="mb-10 sm:mb-14">
           <h1 className="mb-3 text-2xl font-semibold tracking-tight sm:mb-4 sm:text-4xl">
             Hi, I'm Rabea.
@@ -30,6 +44,10 @@ function HomePage() {
           <p className="max-w-2xl text-base text-muted-foreground sm:text-lg">
             I write about how we build at Quidkey: engineering decisions, product tradeoffs, and
             founder lessons from the road.
+          </p>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:mt-4 sm:text-base">
+            Expect practical writeups: what we tried, what broke, what we changed, and the specific
+            habits and tooling that helped us ship faster without losing quality.
           </p>
         </section>
 
