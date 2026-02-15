@@ -9,7 +9,7 @@ export const Route = createFileRoute('/about')({
     buildSeo({
       title: 'About Rabea Bader — engineering + founder notes | rabea.sh',
       description:
-        "I’m Rabea Bader. I write about building Quidkey, shipping software faster, and the engineering/product tradeoffs behind real decisions.",
+        "I’m the CTO and co-founder of Quidkey. I share our journey building global payment infrastructure—architecture, challenges, tradeoffs, and lessons learned.",
       path: '/about',
     }),
 })
@@ -22,12 +22,8 @@ function AboutPage() {
         <h1 className="mb-4 text-2xl font-semibold tracking-tight sm:text-3xl">About</h1>
         <div className="prose prose-neutral max-w-none">
           <p>
-            I’m Rabea. I build at Quidkey and write about engineering decisions, product tradeoffs, and
-            founder lessons from the road.
-          </p>
-          <p>
-            If you’re reading this via search: this site is intentionally small and fast. Posts are
-            based on first-hand experience and usually include concrete tactics you can apply.
+            I’m the CTO and co-founder of Quidkey, and I’ll be sharing our journey building a global
+            payment infrastructure: architecture, challenges, tradeoffs, and lessons learned.
           </p>
         </div>
       </main>

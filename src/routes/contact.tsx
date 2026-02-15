@@ -23,7 +23,7 @@ function ContactPage() {
         <div className="prose prose-neutral max-w-none">
           <p>
             The easiest way to reach me is email:{' '}
-            <a href="mailto:hello@rabea.sh">hello@rabea.sh</a>.
+            <a href="mailto:rabea@quidkey.com">rabea@quidkey.com</a>.
           </p>
           <p>
             If it’s about a specific post, include the link so I can respond with context.

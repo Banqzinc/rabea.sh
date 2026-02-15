@@ -26,19 +26,19 @@ function PrivacyPage() {
           </p>
           <h2>What I collect</h2>
           <p>
-            This site may collect standard, aggregated analytics (for example page views) through the
-            hosting provider or analytics tooling. I don’t knowingly collect sensitive personal
-            information.
+            I use Google Analytics and Microsoft Clarity to understand how people read and use this
+            site, with the goal of improving it. I don’t use analytics for marketing, ads, or
+            retargeting.
           </p>
           <h2>Cookies</h2>
           <p>
-            If analytics are enabled, they may use cookies or similar technologies. You can block
+            These tools may use cookies or similar technologies to measure usage. You can block
             cookies in your browser settings.
           </p>
           <h2>Contact</h2>
           <p>
             Questions? Email{' '}
-            <a href="mailto:hello@rabea.sh">hello@rabea.sh</a>
+            <a href="mailto:rabea@quidkey.com">rabea@quidkey.com</a>
             .
           </p>
         </div>
