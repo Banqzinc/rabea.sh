@@ -4,6 +4,7 @@ import remarkGfm from 'remark-gfm'
 import { SiteHeader } from '@/components/layout/site-header'
 import { SiteFooter } from '@/components/layout/site-footer'
 import { ShareBar } from '@/components/blog/share-bar'
+import { LinkedInIcon } from '@/components/icons'
 import { getPostBySlug } from '@/lib/posts'
 import { buildArticleSchema, buildSeo, getSiteUrl } from '@/lib/seo'
 
@@ -60,6 +61,10 @@ function PostPage() {
     )
   }
 
+  const authorLinkedInUrl =
+    post.author === 'Rabea Bader' ? 'https://www.linkedin.com/in/rabea-bader/' : null
+  const quidkeyUrl = 'https://quidkey.com'
+
   const siteUrl = getSiteUrl()
   const canonicalUrl = post.canonical ?? `${siteUrl}/posts/${post.slug}`
   const articleSchema = buildArticleSchema({
@@ -98,6 +103,26 @@ function PostPage() {
             </span>
             <span className="hidden sm:inline">·</span>
             <span>By {post.author}</span>
+            {authorLinkedInUrl ? (
+              <a
+                href={authorLinkedInUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center no-underline hover:underline"
+                aria-label={`${post.author} on LinkedIn`}
+              >
+                <LinkedInIcon className="h-4 w-4 sm:h-3.5 sm:w-3.5" />
+              </a>
+            ) : null}
+            <span className="hidden sm:inline">·</span>
+            <a
+              href={quidkeyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="no-underline hover:underline"
+            >
+              Quidkey
+            </a>
           </div>
 
           <ShareBar title={post.title} url={canonicalUrl} />

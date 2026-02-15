@@ -1,6 +1,6 @@
 ---
 title: "From weeks to days: how we reduced feature delivery time at Quidkey"
-description: "How we cut feature delivery time from weeks to days by changing our workflow: proposals-first, clear ownership, strong testing/tooling, and AI-assisted planning and reviews."
+description: "How we cut feature delivery time from weeks to days by changing our workflow: proposals-first, clear ownership, strong testing/tooling, and AI-assisted planning, execution, and reviews."
 date: "2026-02-15"
 author: "Rabea Bader"
 tags:
