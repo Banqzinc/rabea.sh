@@ -37,7 +37,7 @@ Before someone starts working on anything significant, they write a proposal. An
 
 The proposal concept was introduced to me by Steven (who borrowed it from Monzo). As a team we improved it, adapted it, and turned it into something that works for us. It’s a document with examples to guide thinking for building something new, but it is not a form that must be filled. The goal is not documentation, a perfect spec or a process for the sake of a process. The goal is shared understanding.
 
-It’s meant to make sure we all understand the same problem, the same goal, and the same plan before any code is written. We include a clear overview of what we are building, why we are building it, how we define and measure success, what is in scope and out of scope, and a functional overview that explains the feature from a user or business perspective. See our Notion template and feel free to add your suggestions
+It’s meant to make sure we all understand the same problem, the same goal, and the same plan before any code is written. We include a clear overview of what we are building, why we are building it, how we define and measure success, what is in scope and out of scope, and a functional overview that explains the feature from a user or business perspective. See our [Notion template](https://www.notion.so/Proposal-Template-30a85a3bfd978072afd7e4bb8a8c68dd?source=copy_link) and feel free to add your suggestions.
 
 Developers decide how much to write based on the complexity of the change. Sometimes it is a few sentences. Sometimes it is much more.  Everyone must understand what we are building, why we are building it, and how we will build it.
 
@@ -77,11 +77,11 @@ I then ask Cursor to update the Linear tasks with what we actually implemented, 
 
 I keep going until the proposal is fully implemented, including unit tests and integration tests. I also love using a different AI provider to test code written by another provider. GPT tests Claude, Claude tests GPT. I think AIs love the challenge. Just like humans, they have ego and want to prove they can do it better.
 
-**Testing and tooling make speed safe**
+## Testing and tooling make speed safe
 
 Speed without safety creates a fragile system. So we invested heavily in testing and internal tooling that allow us to move fast without breaking production. We test at every level. Unit, integration, end-to-end across full payment lifecycles, and UI tests for critical flows.
 
-We built a CLI that lets developers simulate real payment flows locally and across environments. Docker and Mise-en-place keep things consistent across development environments, so code behaves the same locally, in CI, and in production. Secrets are managed centrally, so developers don’t handle them manually.
+We built a CLI that lets developers simulate real payment flows locally and across environments. Docker and [Mise-en-place](https://mise.jdx.dev/) keep things consistent across development environments, so code behaves the same locally, in CI, and in production. Secrets are managed centrally, so developers don’t handle them manually.
 
 There are many more internal skills and CI/CD tools that deserve a deeper dive. We will write a separate post about our tooling.
 
@@ -91,7 +91,7 @@ Speed is good only when it is safe. Tooling makes that possible.
 
 Then I ask Cursor to update the proposal in Notion if needed, because many times you discover nuance while building. The plan changes slightly. That’s normal. The proposal is a living doc, not set in stone.
 
-Now we get to code review. While implementing, I do my best to break work into short, reviewable pull requests so my team doesn’t hate me. For that, we use Graphite. It’s a great tool (Although Graphite’s MCP integration has been broken in Cursor for a while, maybe it’s just for me?) for stacked diffs - Read about Stacked diffs in the [Pragmatic engineer](https://newsletter.pragmaticengineer.com/p/stacked-diffs), it’s life changing. Graphite’s `gt sync` and `gt restack` has changed my life. It makes rebasing and merging feel way less painful.
+Now we get to code review. While implementing, I do my best to break work into short, reviewable pull requests so my team doesn’t hate me. For that, we use [Graphite](https://graphite.com/). It’s a great tool (Although Graphite’s MCP integration has been broken in Cursor for a while, maybe it’s just for me?) for stacked diffs - Read about Stacked diffs in the [Pragmatic engineer](https://newsletter.pragmaticengineer.com/p/stacked-diffs), it’s life changing. Graphite’s `gt sync` and `gt restack` has changed my life. It makes rebasing and merging feel way less painful.
 
 But, since we move fast we sometimes (many times) end up with bigger PRs. And then Steven came in with a custom command he built for Claude that we now use across other tools too, which can break a big change into small reviewable PRs and stack them properly with Graphite, while keeping the exact same final code. To be honest, this has made me a bit lazier, if that’s even possible. I move fast, and I rely on this to clean it up into a nice review flow. If people are interested, I’ll ask Steven to share more about it.
 
@@ -121,4 +121,4 @@ AI doesn't replace engineers. It makes the curious ones faster. But without prop
 
 This is how we build at Quidkey today. It's still changing. Our workflows evolve every week. We're not done figuring it out. I don't think we ever will be.
 
-rabea@quidkey.com
+[rabea@quidkey.com](mailto:rabea@quidkey.com)
