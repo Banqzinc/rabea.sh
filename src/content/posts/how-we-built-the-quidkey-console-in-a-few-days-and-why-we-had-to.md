@@ -11,6 +11,10 @@ tags:
 
 This week we launched the Quidkey Console.
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/FWk7ICKpprM?si=zUtjkELFqblvVjwZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<br>
+
 When we started building Quidkey, we always had three things in mind, other than building the Core itself, the system that handles the payment logic, integrations, data layer, and acts as the source of truth:
 
 - A back office, so admins could view and manage customers, transactions, and support.
