@@ -73,7 +73,7 @@ That decision came with pain too.
 
 A lot of things that had lived in the old Merchant Portal, especially around user management and some business logic, had to be moved into the Core where they actually belonged. But once the architecture direction was clear, that work became much easier to do properly.
 
-Having the full codebase in context, good team guidance, clear rules, [Claude.md](http://claude.md/), Cursor rules, and tools like shadcn and TanStack Router made it possible to move incredibly fast.
+Having the full codebase in context, good team guidance, clear rules, Claude.md, Cursor rules, and tools like shadcn and TanStack Router made it possible to move incredibly fast.
 
 The first MVP was usable within hours.
 
