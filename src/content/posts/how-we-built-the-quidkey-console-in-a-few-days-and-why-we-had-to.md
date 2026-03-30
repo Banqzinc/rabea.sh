@@ -98,3 +98,5 @@ The whole thing ended up costing around $1,540 in tokens, plus my time.
 Honestly, I think it was one of the best investments we made. Not because we got a nice new UI in a few days, but because we removed friction from the core of how the company operates.
 
 And once we built it, it became hard to imagine operating without it.
+
+[rabea@quidkey.com](mailto:rabea@quidkey.com)
