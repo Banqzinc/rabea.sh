@@ -4,8 +4,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev --port 3001",
+    "generate:og": "node ./scripts/generate-og-images.mjs",
     "generate:seo": "node ./scripts/generate-seo-files.mjs",
-    "build": "npm run generate:seo && vite build",
+    "build": "npm run generate:og && npm run generate:seo && vite build",
     "preview": "vite preview",
     "test": "vitest run"
   },
@@ -29,6 +30,7 @@
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
     "@vitejs/plugin-react": "^5.0.4",
+    "sharp": "^0.35.4",
     "typescript": "^5.7.2",
     "vite": "^7.1.7",
     "vitest": "^3.0.5"

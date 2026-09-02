@@ -2,19 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://rabea.sh/</loc>
-    <lastmod>2026-04-14</lastmod>
+    <lastmod>2026-09-02</lastmod>
   </url>
   <url>
     <loc>https://rabea.sh/about</loc>
-    <lastmod>2026-04-14</lastmod>
+    <lastmod>2026-09-02</lastmod>
   </url>
   <url>
     <loc>https://rabea.sh/contact</loc>
-    <lastmod>2026-04-14</lastmod>
+    <lastmod>2026-09-02</lastmod>
   </url>
   <url>
     <loc>https://rabea.sh/posts</loc>
-    <lastmod>2026-04-14</lastmod>
+    <lastmod>2026-09-02</lastmod>
   </url>
   <url>
     <loc>https://rabea.sh/posts/banking-as-a-service-for-ai-agents</loc>
@@ -29,7 +29,11 @@
     <lastmod>2026-03-26</lastmod>
   </url>
   <url>
+    <loc>https://rabea.sh/posts/why-i-run-claude-code-on-a-server</loc>
+    <lastmod>2026-09-02</lastmod>
+  </url>
+  <url>
     <loc>https://rabea.sh/privacy</loc>
-    <lastmod>2026-04-14</lastmod>
+    <lastmod>2026-09-02</lastmod>
   </url>
 </urlset>

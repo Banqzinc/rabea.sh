@@ -7,7 +7,9 @@ import { SiteFooter } from '@/components/layout/site-footer'
 import { ShareBar } from '@/components/blog/share-bar'
 import { LinkedInIcon } from '@/components/icons'
 import { getPostBySlug } from '@/lib/posts'
-import { buildArticleSchema, buildSeo, getSiteUrl } from '@/lib/seo'
+import { buildArticleSchema, buildSeo, getPostOgImageUrl, getSiteUrl } from '@/lib/seo'
+
+const AUTHOR_LINKEDIN_URL = 'https://www.linkedin.com/in/rabea-bader/'
 
 function buildPostMetaTitle(postTitle: string) {
   const brand = 'rabea.sh'
@@ -31,15 +33,17 @@ export const Route = createFileRoute('/posts/$slug')({
       })
     }
 
-    const siteUrl = getSiteUrl()
     const postPath = `/posts/${post.slug}` as const
 
     return buildSeo({
       title: buildPostMetaTitle(post.title),
+      ogTitle: post.title,
       description: post.description,
+      keywords: post.tags,
       path: postPath,
       ogType: 'article',
-      imageUrl: post.coverImage ? `${siteUrl}${post.coverImage}` : undefined,
+      imageUrl: getPostOgImageUrl(post),
+      imageAlt: post.title,
       article: {
         datePublished: post.date,
         author: post.author,
@@ -71,8 +75,7 @@ function PostPage() {
     )
   }
 
-  const authorLinkedInUrl =
-    post.author === 'Rabea Bader' ? 'https://www.linkedin.com/in/rabea-bader/' : null
+  const authorLinkedInUrl = post.author === 'Rabea Bader' ? AUTHOR_LINKEDIN_URL : null
   const quidkeyUrl = 'https://quidkey.com'
 
   const siteUrl = getSiteUrl()
@@ -82,8 +85,10 @@ function PostPage() {
     description: post.description,
     datePublished: post.date,
     author: post.author,
+    authorUrl: authorLinkedInUrl ?? undefined,
     url: canonicalUrl,
-    imageUrl: post.coverImage ? `${siteUrl}${post.coverImage}` : undefined,
+    imageUrl: getPostOgImageUrl(post),
+    keywords: post.tags,
   })
 
   return (
